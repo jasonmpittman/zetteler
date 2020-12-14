@@ -8,6 +8,7 @@ __email__ = "jpittman@highpoint.edu"
 __status__ = "Development"
 
 import time
+import os
 import configparser
 from datetime import datetime
 
@@ -25,7 +26,7 @@ class Zettel:
 
     def __init__(self, config_file, type=None):
         self.types = configparser.ConfigParser()
-        self.types.read(config_file)
+        self.types.read(os.path.join(os.path.dirname(__file__), config_file))
 
         if type is not None:
             if self.__is_type_defined(type):
